@@ -1,7 +1,7 @@
 // decision-tree.js
 // ---------------------------------------------------------------------------
 // All EDMA-s.120 decision logic lives here. Each question / answer string is
-// a template literal with inline HTML so we can keep real bullets & spacing.
+// a template literal with inline HTML so we keep real bullets & spacing.
 // ---------------------------------------------------------------------------
 
 export const tree = {
@@ -21,9 +21,9 @@ export const tree = {
       <ul>
         <li>Make an emergency instrument or take any other action under the following provisions:
           <ul>
-            <li>Sections 107 (1)(b) and 118 (1)(b) [recovery powers] &mdash; to the extent they authorize the local authority to do things the minister may do under s. 76 (1)(a)&ndash;(f) [land and other property];</li>
+            <li>Sections 107 (1)(b) and 118 (1)(b) [recovery powers] — to the extent they authorize the local authority to do things the minister may do under s. 76 (1)(a)–(f) [land and other property];</li>
             <li>Section 107 (1)(c);</li>
-            <li>Sections 107 (1)(d) and 118 (1)(c) &mdash; to the extent they authorize the local authority to do things the minister may do under s. 78 (1)(a) [general restrictions];</li>
+            <li>Sections 107 (1)(d) and 118 (1)(c) — to the extent they authorize the local authority to do things the minister may do under s. 78 (1)(a) [general restrictions];</li>
             <li>Section 118 (2).</li>
           </ul>
         </li>
@@ -42,12 +42,12 @@ export const tree = {
     question: `
       Will the emergency instrument/action, warning or permission affect an area, or the people in an area, that is:
       <ul>
-        <li>within Nisg̱a'a Lands or treaty lands of a treaty first nation,</li>
+        <li>within <em>Nisg̱a'a Lands</em> or treaty lands of a treaty first nation,</li>
         <li>described for the purposes of this section in one or more of the following:
           <ul>
-            <li>your emergency management plan;</li>
+            <li>the local authority's emergency management plan;</li>
             <li>an agreement made under this Act with an Indigenous governing body; or</li>
-            <li>a provincial emergency management plan.</li>
+            <li>described for the purposes of s. 90 in an emergency management plan under s. 39 (1)(b) for that Indigenous governing body.</li>
           </ul>
         </li>
       </ul>
@@ -63,7 +63,7 @@ export const tree = {
     question: `
       Are you considering making an emergency instrument or taking any other action identified in a provision below?
       <ul>
-        <li>Sections 107 (1)(b) and 118 (1)(b) [recovery powers] &mdash; to the extent they authorize the local authority to do things the minister may do under s. 76 (1)(a)&ndash;(f).</li>
+        <li>Sections 107 (1)(b) and 118 (1)(b) [recovery powers] — to the extent they authorize the local authority to do things the minister may do under s. 76 (1)(a)–(f).</li>
         <li>Section 107 (1)(c).</li>
       </ul>
     `,
@@ -92,13 +92,13 @@ export const tree = {
   /* ────────────────  leaves / results  ──────────────── */
   answer_noobligation: {
     answer: `
-      There is <strong>no requirement</strong> under EDMA&nbsp;s.120 to undertake consultation and cooperation.
+      There is <strong>no requirement</strong> under EDMA s. 120 to undertake consultation and cooperation.
     `
   },
 
   answer_complies1: {
     answer: `
-      <p>There <strong>is</strong> an obligation to undertake consultation and cooperation under EDMA&nbsp;s.120.</p>
+      <p>There <strong>is</strong> an obligation to undertake consultation and cooperation under EDMA s. 120.</p>
 
       <p><u>Before</u> taking the action, the local authority must:</p>
       <ul>
@@ -112,7 +112,7 @@ export const tree = {
         <li><strong>Give notice</strong> to the Indigenous body of:
           <ul>
             <li>the details of the intended action; and</li>
-            <li>any arrangements you intend to make under s.&nbsp;107 (1)(c) with respect to evacuated individuals.</li>
+            <li>any arrangements you intend to make under s. 107 (1)(c) with respect to evacuated individuals.</li>
           </ul>
         </li>
         <li><strong>Consider</strong>:
@@ -121,7 +121,7 @@ export const tree = {
             <li>the rights of the Indigenous peoples on whose behalf it acts.</li>
           </ul>
         </li>
-        <li>You <strong>must not</strong> take the action if it will affect Nisg̱a'a Lands or treaty lands <em>unless</em> the Nisg̱a'a Nation or treaty first nation consents.</li>
+        <li>You <strong>must not</strong> take an action described in s. 120 (2)(a) that will affect Nisg̱a'a Lands or treaty lands <em>unless</em> the Nisg̱a'a Nation or treaty first nation consents.</li>
       </ul>
     `
   },
@@ -140,7 +140,7 @@ export const tree = {
         <li><strong>Give notice</strong> to the Indigenous body of:
           <ul>
             <li>the details of the action taken; and</li>
-            <li>any arrangements you made or intend to make under s.&nbsp;107 (1)(c) with respect to evacuated persons.</li>
+            <li>any arrangements you made or intend to make under s. 107 (1)(c) with respect to evacuated persons.</li>
           </ul>
         </li>
         <li><strong>Consider</strong>:
