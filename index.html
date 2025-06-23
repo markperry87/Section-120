@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EDMA s. 120 Consultation Checker</title>
+
+  <style>
+    :root {
+      --card-width: 800px;   /* wider to handle long text */
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    #app {
+      max-width: var(--card-width);
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+    }
+
+    h1 { font-size: 1.5rem; }
+
+    /* buttons */
+    .option-btn {
+      display: block;
+      width: 100%;
+      padding: .75rem;
+      margin: .5rem 0;
+      font-size: 1rem;
+      border: 1px solid #0077cc;
+      border-radius: 4px;
+      background: #fff;
+      cursor: pointer;
+    }
+    .option-btn:hover {
+      background: #0077cc;
+      color: #fff;
+    }
+    .restart { margin-top: 2rem; }
+
+    /* question / answer areas */
+    #options {
+      max-height: 60vh;          /* scroll instead of growing forever */
+      overflow-y: auto;
+      white-space: normal;
+    }
+    .answer {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      line-height: 1.45;
+    }
+
+    small.disclaimer {
+      display: block;
+      margin-top: 2rem;
+      font-size: .8rem;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h1 id="question">Loading…</h1>
+    <div id="options"></div>
+  </div>
+
+  <!-- Main logic -->
+  <script type="module">
+    /* NOTE: run this over http://localhost:* (not file:///) so ES-modules load */
+    import { tree } from './decision-tree.js';
+
+    let currentNodeKey = 'start';
+    const questionEl = document.getElementById('question');
+    const optionsEl  = document.getElementById('options');
+
+    function renderNode () {
+      const node = tree[currentNodeKey];
+      optionsEl.innerHTML = '';
+
+      if (node.answer) {
+        questionEl.textContent = 'Result';
+
+        const answerP = document.createElement('div');
+        answerP.className = 'answer';
+        answerP.innerHTML = node.answer;     // allow HTML bullets
+        optionsEl.appendChild(answerP);
+
+        const restartBtn = document.createElement('button');
+        restartBtn.textContent = 'Start over';
+        restartBtn.className = 'option-btn restart';
+        restartBtn.addEventListener('click', () => {
+          currentNodeKey = 'start';
+          renderNode();
+        });
+        optionsEl.appendChild(restartBtn);
+
+        const disc = document.createElement('small');
+        disc.className = 'disclaimer';
+        disc.textContent = 'This tool is for general informational purposes only and is not legal advice.';
+        optionsEl.appendChild(disc);
+
+      } else {
+        questionEl.innerHTML = node.question;   // display HTML
+        node.options.forEach(opt => {
+          const btn = document.createElement('button');
+          btn.className = 'option-btn';
+          btn.textContent = opt.text;
+          btn.addEventListener('click', () => {
+            currentNodeKey = opt.next;
+            renderNode();
+          });
+          optionsEl.appendChild(btn);
+        });
+      }
+    }
+
+    renderNode();
+  </script>
+</body>
+</html>
